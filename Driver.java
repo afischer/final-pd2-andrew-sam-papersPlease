@@ -9,7 +9,7 @@ public class Driver {
     Scanner sc = new Scanner(System.in);
 	passmaker p = new passmaker();
 	
-	p.photoParser("/Users/Andrew/Documents/eclipse_workspace/APCSZ-Final/src/m1.txt");
+	p.photoParser("m1.txt");
 	System.out.println(">> Papers, please.");
 	
 	try{Thread.sleep(1000);}catch(InterruptedException ex){}

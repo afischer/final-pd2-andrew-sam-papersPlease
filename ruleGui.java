@@ -11,6 +11,12 @@ import java.util.*;
 
 public class ruleGui extends javax.swing.JFrame {
 
+   
+
+    
+    
+    
+
     public ruleGui() {
         initComponents();
     }
@@ -29,12 +35,22 @@ public class ruleGui extends javax.swing.JFrame {
         documentText = new JLabel();
         copyrightPane = new JPanel();
         copyrightText = new JLabel();
-
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        //tabbedPane.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        String bulletinTxt = "";
+	String ruleTxt = "";
+	String docTxt = "";
+	String copyTxt = "";
 
-        bulletinText.setText("BULLETIN TEXT GOES HERE! Blah blah!");
+
+	bulletinTxt = "Hello inspector. Welcome to your first day.";
+	ruleTxt = "This is where your rules will go.";
+	docTxt = "Come here to learn about the various documents you will encounter.";
+	copyTxt = "<html><center><b>Copyright MOA.</b> <br> Glory to Arstoksa.";
+	
+
+
+        bulletinText.setText(bulletinTxt);
 
         GroupLayout bulletinPaneLayout = new GroupLayout(bulletinPane); //wow this seems so redundant...
         bulletinPane.setLayout(bulletinPaneLayout);
@@ -56,7 +72,7 @@ public class ruleGui extends javax.swing.JFrame {
 
         tabbedPane.addTab("Bulletin", bulletinPane);
 
-        ruleText.setText("RULES TEXT HERE");
+        ruleText.setText(ruleTxt);
 
         GroupLayout rulePaneLayout = new GroupLayout(rulePane);
         rulePane.setLayout(rulePaneLayout);
@@ -77,7 +93,7 @@ public class ruleGui extends javax.swing.JFrame {
 
         tabbedPane.addTab("Rules", rulePane);
 
-        mapImage.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("").getPath() + "Map.png")); //Puts the image in the mapImage var
+        mapImage.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("").getPath() + "MapEmpty.png")); //Puts the image in the mapImage var
 
         GroupLayout mapPaneLayout = new GroupLayout(mapPane);
         mapPane.setLayout(mapPaneLayout);
@@ -97,7 +113,7 @@ public class ruleGui extends javax.swing.JFrame {
 
         tabbedPane.addTab("Map", mapPane);
 
-        documentText.setText("DOCUMENT TEXT GOES HERE");
+        documentText.setText(docTxt);
 
         GroupLayout documentsPaneLayout = new GroupLayout(documentsPane);
         documentsPane.setLayout(documentsPaneLayout);
@@ -118,7 +134,7 @@ public class ruleGui extends javax.swing.JFrame {
 
         tabbedPane.addTab("Documents", documentsPane);
 
-        copyrightText.setText("COPYRIGHT INFO HERE");
+        copyrightText.setText(copyTxt);
 
         GroupLayout copyrightPaneLayout = new GroupLayout(copyrightPane);
         copyrightPane.setLayout(copyrightPaneLayout);
