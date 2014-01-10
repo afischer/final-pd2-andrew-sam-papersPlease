@@ -11,15 +11,13 @@ import java.util.*;
 
 public class ruleGui extends javax.swing.JFrame {
 
-   
-
-    
-    
-    
-
     public ruleGui() {
         initComponents();
     }
+    
+    public String ruleDay1 = "Only allow Arstotzkan citizens through the checkpoint.";
+    public String ruleDay3 = "Allow foreigners through the checkpoint only if their passports are valid. Passports should not be expired, and should match the holder's face, gender, etc.";
+    public String ruleDay5 = "";
 
 
     private void initComponents() {
