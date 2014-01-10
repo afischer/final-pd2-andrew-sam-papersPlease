@@ -8,8 +8,11 @@ public class Driver {
 	
     Scanner sc = new Scanner(System.in);
 	passmaker p = new passmaker();
+	boothMaker b = new boothMaker();
 	
 	p.photoParser("m1.txt");
+	System.out.println(b.makeBooth("00/00","00","0,0"));
+
 	System.out.println(">> Papers, please.");
 	
 	try{Thread.sleep(1000);}catch(InterruptedException ex){}
@@ -33,7 +36,7 @@ public class Driver {
 		System.out.println("WRONG BUTTON."); //we have to put in a catch if they don't put in an int.
 	}
 	
-	
+
 	
 	System.out.println("Reached end of program. Terminating.");
 	
@@ -48,5 +51,4 @@ public class Driver {
     public String getFilePath(){
     	return this.getClass().getClassLoader().getResource("").getPath();
     }
-
 }
