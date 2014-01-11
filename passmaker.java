@@ -120,7 +120,7 @@ public class passmaker{
 	passport +="|/====================================\\:/====================================\\|\n";
 	passport +="'------------------------------------~___~------------------------------------'";
 	
-	//System.out.println(this.getClass().getClassLoader().getResource("").getPath() + "m1.txt");
+	//System.out.println(this.getClass().getClassLoader().getResource("").getPath() + "people/m1.txt");
 	
 
 	// FIN - The return statement

@@ -3,7 +3,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
-public class passGui extends JFrame implements ActionListener{
+
+public class passGui extends JFrame implements ActionListener {
     
     private JButton exitButton;
     private JLabel label;
@@ -18,15 +19,15 @@ public class passGui extends JFrame implements ActionListener{
 	//Action Listener for Exit Button
 	public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == exitButton) {
-	    System.exit(0);
+	    this.setVisible(false);
 	} else { }
     }
     
     public passGui() {
 	this.setTitle("ARISTOKSA MOA Passport Viewer");
-	this.setSize(800,420);
+	this.setSize(800,480);
 	this.setLocation(100,100);
-	this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+	this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 	this.setAlwaysOnTop(true);
 	
 	pane = this.getContentPane();
@@ -46,7 +47,8 @@ public class passGui extends JFrame implements ActionListener{
 	pane.add(label);
 	pane.add(buttons);
 
-	exitButton.addActionListener(this);
+    	exitButton.addActionListener(this);
+
     }
 
     public static void main(String[] args) {

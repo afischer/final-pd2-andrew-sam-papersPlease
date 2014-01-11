@@ -46,8 +46,9 @@ public class ruleGui extends javax.swing.JFrame {
 	docTxt = "Come here to learn about the various documents you will encounter.";
 	copyTxt = "<html><center><b>Copyright MOA.</b> <br> Glory to Arstoksa.";
 	
+	this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 
-
+	
         bulletinText.setText(bulletinTxt);
 
         GroupLayout bulletinPaneLayout = new GroupLayout(bulletinPane); //wow this seems so redundant...
@@ -91,10 +92,11 @@ public class ruleGui extends javax.swing.JFrame {
 
         tabbedPane.addTab("Rules", rulePane);
 
-        mapImage.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("").getPath() + "MapEmpty.png")); //Puts the image in the mapImage var
+        mapImage.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("").getPath() + "Map.png")); //Puts the image in the mapImage var
 
         GroupLayout mapPaneLayout = new GroupLayout(mapPane);
         mapPane.setLayout(mapPaneLayout);
+
         mapPaneLayout.setHorizontalGroup(
 					 mapPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
 					 .addGroup(mapPaneLayout.createSequentialGroup()
@@ -169,7 +171,7 @@ public class ruleGui extends javax.swing.JFrame {
         pack();
     }
 
-
+    
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
