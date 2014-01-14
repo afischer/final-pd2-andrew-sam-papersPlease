@@ -1,14 +1,14 @@
 import java.io.*;
 import java.util.*;
 
-public class boothMaker{
+public class BoothMaker{
 
     static String photo[] = new String [17];
     private ArrayList<String> wordList;
     String date = "00/00";
     String wt = "00";
     String ht = "0.0";
-    passmaker p = new passmaker();
+    PassMaker p = new PassMaker();
 
     //     public void photoParser(String filename) throws IOException {
     // 	File f = new File(filename);
@@ -33,7 +33,6 @@ public class boothMaker{
 
 	String booth = "";
 
-	booth += "<html><pre>\n";
 	booth += " __________________________________________ \n";
 	booth += "|                                          |\n";
 

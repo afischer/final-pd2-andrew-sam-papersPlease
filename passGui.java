@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.io.*;
 
 
-public class passGui extends JFrame implements ActionListener {
+public class PassGui extends JFrame implements ActionListener {
     
     private JButton exitButton;
     private JLabel label;
@@ -12,7 +12,7 @@ public class passGui extends JFrame implements ActionListener {
     private Container buttons;
     protected Container pane;
     
-    passmaker p = new passmaker();
+    PassMaker p = new PassMaker();
     
 	String passport = p.make(p.getName("Male"), p.getLName(), "08/19/44", "male", "impor","11/22/83" , "1832-ASDE-DFSD-EF");
 	
@@ -23,7 +23,7 @@ public class passGui extends JFrame implements ActionListener {
 	} else { }
     }
     
-    public passGui() {
+    public PassGui() {
 	this.setTitle("ARISTOKSA MOA Passport Viewer");
 	this.setSize(800,480);
 	this.setLocation(100,100);
@@ -52,7 +52,7 @@ public class passGui extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-    	passGui g = new passGui();
+    	PassGui g = new PassGui();
     	g.setVisible(true);
     }
 }

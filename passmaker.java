@@ -4,7 +4,7 @@ import java.util.*;
 
 
 
-public class passmaker{
+public class PassMaker{
 
     String fname = "";
     String lname = "";     // Eventually we will need to
