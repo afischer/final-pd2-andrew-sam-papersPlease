@@ -9,7 +9,10 @@ public class Level {
 	int inCount = 0; 		//How many you have allowed in
 	int outCount = 0;		//How many you have kept out
 	boolean validInpt = false;
-	int thisLevel = 0;
+    int thisLevel = 0;
+
+    private ArrayList<String> wordList;
+
 
 	public void encounter() throws IOException{
 
@@ -22,7 +25,7 @@ public class Level {
 		String currPath = p.getClass().getClassLoader().getResource("").getPath();
 
 
-		p.photoParser(currPath + "people/m1.txt"); //creates the passport of a person.
+		p.photoParser(currPath + "people/f1.txt"); //creates the passport of a person.
 		System.out.println(b.makeBooth("00/00","00","0,0")); //makes and prints the booth, using passport image.
 		try{Thread.sleep(1000);}catch(InterruptedException ex){}
 
@@ -77,20 +80,43 @@ public class Level {
 		}
 
 		if (state.equals("accepted")) {
-			inCount++;
-			try{Thread.sleep(1000);}catch(InterruptedException ex){}
-			System.out.println("<< Thank you. God Bless.");
-			try{Thread.sleep(1000);}catch(InterruptedException ex){}
-			System.out.println("<< Glory to Arstoksa.");
-			try{Thread.sleep(500);}catch(InterruptedException ex){}
-			System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount);
+		    inCount++;
+		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
+		    System.out.println("<< " + getRandLine("thanks.txt"));
+		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
+		    System.out.println("<< Glory to Arstoksa.");
+		    try{Thread.sleep(500);}catch(InterruptedException ex){}
+		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount);
 		}
 		if (state.equals("denied")) {
-			outCount++;
-			try{Thread.sleep(1000);}catch(InterruptedException ex){}
-			System.out.println("<< Go to hell!.");
-			try{Thread.sleep(500);}catch(InterruptedException ex){}
-			System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount);
+		    outCount++;
+		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
+		    System.out.println("<< " + getRandLine("nothanks.txt"));
+		    try{Thread.sleep(500);}catch(InterruptedException ex){}
+		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount);
 		}
 	}
+	
+
+    public String getRandLine(String filename){
+    	wordList = new ArrayList<String>();
+    	try {
+	    File f = new File(filename);
+	    Scanner sc = new Scanner(f);
+	    while (sc.hasNext()) {
+		String s = sc.nextLine();
+		wordList.add(s);
+	    }	
+    		
+	    int rand = (int)(wordList.size() * Math.random());
+    		
+	    return wordList.get(rand);
+    		
+    	} catch (FileNotFoundException e) {
+	    System.out.println(e);
+	    System.exit(0);
+	    return "error.";
+    	}
+    }
+
 }
