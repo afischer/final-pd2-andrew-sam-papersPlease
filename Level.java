@@ -25,8 +25,8 @@ public class Level {
 		String currPath = p.getClass().getClassLoader().getResource("").getPath();
 
 
-		p.photoParser(currPath + "people/f1.txt"); //creates the passport of a person.
-		System.out.println(b.makeBooth("00/00","00","0,0")); //makes and prints the booth, using passport image.
+		p.photoParser(currPath + "people/f5.txt"); //creates the passport of a person.
+		System.out.println(b.makeBooth("03/12/82","22","4.2")); //makes and prints the booth, using passport image.
 		try{Thread.sleep(1000);}catch(InterruptedException ex){}
 
 
@@ -61,7 +61,7 @@ public class Level {
 
 				if (answer.equals("a")){
 					try{Thread.sleep(500);}catch(InterruptedException ex){}
-					System.out.println(">> Go through. Glory to Arstoksa.");
+					System.out.println(">> Go through. Cause no trouble. Glory to Arstoksa.");
 					state = "accepted";
 					validInpt = true;
 				}
@@ -82,7 +82,7 @@ public class Level {
 		if (state.equals("accepted")) {
 		    inCount++;
 		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
-		    System.out.println("<< " + getRandLine("thanks.txt"));
+		    System.out.println("<< " + getRandLine(getFilePath() + "thanks.txt"));
 		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
 		    System.out.println("<< Glory to Arstoksa.");
 		    try{Thread.sleep(500);}catch(InterruptedException ex){}
@@ -91,7 +91,7 @@ public class Level {
 		if (state.equals("denied")) {
 		    outCount++;
 		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
-		    System.out.println("<< " + getRandLine("nothanks.txt"));
+		    System.out.println("<< " + getRandLine(getFilePath() + "nothanks.txt"));
 		    try{Thread.sleep(500);}catch(InterruptedException ex){}
 		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount);
 		}
@@ -118,5 +118,9 @@ public class Level {
 	    return "error.";
     	}
     }
+    
+	public String getFilePath(){
+		return this.getClass().getClassLoader().getResource("").getPath();
+	}
 
 }

@@ -4,11 +4,9 @@ import java.util.*;
 public class BoothMaker{
 
     static String photo[] = new String [17];
-    private ArrayList<String> wordList;
-    String date = "00/00";
-    String wt = "00";
-    String ht = "0.0";
     PassMaker p = new PassMaker();
+    
+
 
     //     public void photoParser(String filename) throws IOException {
     // 	File f = new File(filename);
@@ -29,7 +27,7 @@ public class BoothMaker{
     // }
     
         
-    public String makeBooth(String Date, String weight, String height){
+    public String makeBooth(String date, String weight, String height){
 
 	String booth = "";
 
@@ -69,11 +67,11 @@ public class BoothMaker{
 	booth += "              |\n";
 
 
-	booth += "|------------------------------------------|\n";
+	booth += "|----------|-----------------|-------------|\n";
 	booth += "|          |                 |             |\n";
 	booth += "|   DATE:  |    TYPE R FOR   |  WT/HEIGHT: |\n";
-	booth += "|   "+ date +"  |     RULEBOOK    |  " + wt + "kg/" + ht + "m  |\n";
-	booth += "|__________________________________________|\n";
+	booth += "| "+ date +" |     RULEBOOK    |  " + weight + "kg/" + height + "m  |\n";
+	booth += "|__________|_________________|_____________|\n";
 	booth += "\n";
 	
 	return booth;

@@ -3,6 +3,7 @@
 //THIS CODE IS MESSY AND NEEDS TO BE SERIOUSLY CLEANED UP.
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -47,6 +48,10 @@ public class RuleGui extends javax.swing.JFrame {
 		copyTxt = "<html><center><b>Copyright MOA.</b> <br> Glory to Arstoksa.";
 
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+	
+		//Meh fonts. Forget it for now. 
+	//	File font_file = new File("BMmini.TTF");
+	//	Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
 
 
 		bulletinText.setText(bulletinTxt);

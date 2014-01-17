@@ -12,8 +12,6 @@ public class Driver {
 
 	}
 
-	public String getFilePath(){
-		return this.getClass().getClassLoader().getResource("").getPath();
-	}
+
 }
 
