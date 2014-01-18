@@ -69,8 +69,8 @@ public class BoothMaker{
 
 	booth += "|----------|-----------------|-------------|\n";
 	booth += "|          |                 |             |\n";
-	booth += "|   DATE:  |    TYPE R FOR   |  WT/HEIGHT: |\n";
-	booth += "| "+ date +" |     RULEBOOK    |  " + weight + "kg/" + height + "m  |\n";
+	booth += "|   DATE:  |Arstoksa Ministry|  WT/HEIGHT: |\n";
+	booth += "| "+ date +" |  of  Admission  |  " + weight + "kg/" + height + "m  |\n";
 	booth += "|__________|_________________|_____________|\n";
 	booth += "\n";
 	

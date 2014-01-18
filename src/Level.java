@@ -8,17 +8,16 @@ public class Level {
 	String answer = "";
 	int inCount = 0; 		//How many you have allowed in
 	int outCount = 0;		//How many you have kept out
-	boolean validInpt = false;
+	int detCount = 0;		//How many you have detained
+	boolean validInpt = false;//THIS IS NO LONGER NEEDED REMOVE ME!!
     int thisLevel = 0;
     
     public static String currSex = "";
     private ArrayList<String> wordList;
 
     	
-
+    //Main encounter protocol.
 	public void encounter() throws IOException{
-
-
 
 		Scanner sc = new Scanner(System.in);
 		PassMaker p = new PassMaker();
@@ -56,7 +55,7 @@ public class Level {
 
 		//catch added
 		while (state == "none"){ //makes sure that when state is none, options are always shown
-			if (state != "accepted" || state != "denied") { //Stops the options from being shown when state given
+			if (state != "accepted" || state != "denied" || state != "questioning") { //Stops the options from being shown when state given
 				//System.out.println(state);
 				System.out.println("   Choose an option: \n     a. allow through \n     b. deny access \n     c. interrogate entrant \n     d. read rulebook");
 				answer = sc.next();
@@ -74,13 +73,15 @@ public class Level {
 					validInpt = true;
 				}
 				else if(answer.equals("c")){
+					state = "questioning";
+					//break; //??
+					questionProtocol();
 					// Put in questioning protocol
 				}
 				else if(answer.equals("d")){
 					String[] guiArgs = {};
 					RuleGui.main(guiArgs);
 				}
-
 			}
 		}
 
@@ -91,18 +92,121 @@ public class Level {
 		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
 		    System.out.println("<< Glory to Arstoksa.");
 		    try{Thread.sleep(500);}catch(InterruptedException ex){}
-		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount);
+		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount);
 		}
 		if (state.equals("denied")) {
 		    outCount++;
 		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
 		    System.out.println("<< " + getRandLine(getFilePath() + "nothanks.txt"));
 		    try{Thread.sleep(500);}catch(InterruptedException ex){}
-		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount);
+		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount);
+		}
+		if (state.equals("detained")) {
+		    detCount++;
+		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
+		    System.out.println("<< " + getRandLine(getFilePath() + "nothanks.txt"));
+		    try{Thread.sleep(500);}catch(InterruptedException ex){}
+		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount);
 		}
 	}
 	
+	public void questionProtocol() throws IOException {
 
+		String answer = "";
+		Scanner sc = new Scanner(System.in);
+
+
+		try{Thread.sleep(1000);}catch(InterruptedException ex){}
+		System.out.println("INITIATING: MOA Interrogation Protocol.");
+		try{Thread.sleep(1000);}catch(InterruptedException ex){}
+
+
+		while (state == "questioning"){
+			if (state != "accepted" || state != "denied" || state != "detained"){
+				//System.out.println(state);
+
+				System.out.println("   Choose an option: \n   Note all options may not be applicable. \n     a. question expired document \n     b. question photo \n     c. question issuing city \n     d. question sex \n     e. missing documents \n     1. read rulebook \n     2. detain entrant \n     3. allow entrance \n     4. deny entrance \n");
+				answer = sc.next();
+
+				if (answer.equals("a")){
+					try{Thread.sleep(500);}catch(InterruptedException ex){}
+					System.out.println(">> This document is expired.");
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+					System.out.println("<< Oh? Must be misprint.");
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+
+				}
+				else if(answer.equals("b")){
+					try{Thread.sleep(500);}catch(InterruptedException ex){}
+					System.out.println(">> This does not look much like you.");
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+					System.out.println("<< What do you want? It is me.");
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+
+				}
+				else if(answer.equals("c")){
+					try{Thread.sleep(500);}catch(InterruptedException ex){}
+					System.out.println(">> This issuing city is invalid. It does not exist.");
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+					System.out.println("<< Huh? Must be typo.");
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+
+				}
+				else if(answer.equals("d")){
+					try{Thread.sleep(500);}catch(InterruptedException ex){}
+					System.out.println(">> You are a " + currSex + "?");
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+					System.out.println("<< Excuse me? As the paper says.");
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+
+				}
+				else if(answer.equals("e")){
+					try{Thread.sleep(500);}catch(InterruptedException ex){}
+					System.out.println(">> You are missing some documents.");
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+					System.out.println("<< What are you talking about? This is what I was given.");
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+					
+				}
+				else if(answer.equals("1")){ //read rulebook
+					String[] guiArgs = {};
+					RuleGui.main(guiArgs);
+				}
+				else if(answer.equals("2")){
+					try{Thread.sleep(500);}catch(InterruptedException ex){}
+					System.out.println(">> Wait here.");
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+					System.out.println("<< What?? What is this? What is going on?");
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+					state = "detained";
+					break; //returns to the main encounter method
+				}
+				else if (answer.equals("3")){
+					try{Thread.sleep(500);}catch(InterruptedException ex){}
+					System.out.println(">> Go through. Cause no trouble. Glory to Arstoksa.");
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+					state = "accepted";
+					break; //returns to the main encounter method
+				}
+				else if(answer.equals("4")){
+					try{Thread.sleep(500);}catch(InterruptedException ex){}
+					System.out.println(">> You can not go through. Please leave.");
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+					state = "denied";
+					validInpt = true;
+					break; //returns to the main encounter method
+				}
+				
+			}
+		}
+	}
+
+
+	
+	
+	
+
+	//AUXILIARY FUNCTIONS//
     public String getRandLine(String filename){
     	wordList = new ArrayList<String>();
     	try {
@@ -138,5 +242,6 @@ public class Level {
 			return "people/f" + (int)(1 + (8 * Math.random())) + ".txt";
 		}
 	}
+	//END AUXILIARY FUNCTIONS//
 	
 }

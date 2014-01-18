@@ -44,14 +44,15 @@ public class RuleGui extends javax.swing.JFrame {
 		//bulletinTxt = "Hello inspector. Welcome to your first day.";
 		//ruleTxt = "This is where your rules will go.";
 		//docTxt = "Come here to learn about the various documents you will encounter.";
-		
+
 		copyTxt = "<html><center><b>Copyright MOA.</b> <br> Glory to Arstoksa.";
 
 		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
-	
+		this.setAlwaysOnTop(true);
+
 		//Meh fonts. Forget it for now. 
-	//	File font_file = new File("BMmini.TTF");
-	//	Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
+		//	File font_file = new File("BMmini.TTF");
+		//	Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
 
 
 		bulletinText.setText(bulletinTxt);
@@ -69,7 +70,7 @@ public class RuleGui extends javax.swing.JFrame {
 				bulletinPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGroup(bulletinPaneLayout.createSequentialGroup()
 						.addContainerGap()
-						.addComponent(bulletinText, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+						.addComponent(bulletinText, GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
 						.addContainerGap())
 				);
 		bulletinPane.setLayer(bulletinText, JLayeredPane.DEFAULT_LAYER);
@@ -187,16 +188,16 @@ public class RuleGui extends javax.swing.JFrame {
 	}
 
 	// Variables declaration - do not modify                     
-	private javax.swing.JLayeredPane bulletinPane;
-	private javax.swing.JLabel bulletinText;
-	private javax.swing.JPanel copyrightPane;
-	private javax.swing.JLabel copyrightText;
-	private javax.swing.JLabel documentText;
-	private javax.swing.JPanel documentsPane;
-	private javax.swing.JLabel mapImage;
-	private javax.swing.JPanel mapPane;
-	private javax.swing.JPanel rulePane;
-	private javax.swing.JLabel ruleText;
-	private javax.swing.JTabbedPane tabbedPane;
+	private JLayeredPane bulletinPane;
+	private JLabel bulletinText;
+	private JPanel copyrightPane;
+	private JLabel copyrightText;
+	private JLabel documentText;
+	private JPanel documentsPane;
+	private JLabel mapImage;
+	private JPanel mapPane;
+	private JPanel rulePane;
+	private JLabel ruleText;
+	private JTabbedPane tabbedPane;
 	// End of variables declaration                   
 }
