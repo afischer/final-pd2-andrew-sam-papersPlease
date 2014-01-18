@@ -10,9 +10,11 @@ public class Level {
 	int outCount = 0;		//How many you have kept out
 	boolean validInpt = false;
     int thisLevel = 0;
-
+    
+    public static String currSex = "";
     private ArrayList<String> wordList;
 
+    	
 
 	public void encounter() throws IOException{
 
@@ -25,7 +27,7 @@ public class Level {
 		String currPath = p.getClass().getClassLoader().getResource("").getPath();
 
 
-		p.photoParser(currPath + "people/f5.txt"); //creates the passport of a person.
+		p.photoParser(currPath + getRandFace()); //creates the passport of a person.
 		System.out.println(b.makeBooth("03/12/82","22","4.2")); //makes and prints the booth, using passport image.
 		try{Thread.sleep(1000);}catch(InterruptedException ex){}
 
@@ -56,7 +58,7 @@ public class Level {
 		while (state == "none"){ //makes sure that when state is none, options are always shown
 			if (state != "accepted" || state != "denied") { //Stops the options from being shown when state given
 				//System.out.println(state);
-				System.out.println("   Choose an option: \n     a. allow through \n     b. deny access \n     c. read rulebook");
+				System.out.println("   Choose an option: \n     a. allow through \n     b. deny access \n     c. interrogate entrant \n     d. read rulebook");
 				answer = sc.next();
 
 				if (answer.equals("a")){
@@ -72,6 +74,9 @@ public class Level {
 					validInpt = true;
 				}
 				else if(answer.equals("c")){
+					// Put in questioning protocol
+				}
+				else if(answer.equals("d")){
 					String[] guiArgs = {};
 					RuleGui.main(guiArgs);
 				}
@@ -123,4 +128,15 @@ public class Level {
 		return this.getClass().getClassLoader().getResource("").getPath();
 	}
 
+	//Decides sex, then gives a random face.
+	public String getRandFace(){
+		if ((int)(1 + (2 * Math.random())) == 1) {currSex = "male";} else {currSex = "female";}
+		if (currSex.equals("male")){
+			return "people/m" + (int)(1 + (11 * Math.random())) + ".txt";
+		}
+		else {
+			return "people/f" + (int)(1 + (8 * Math.random())) + ".txt";
+		}
+	}
+	
 }

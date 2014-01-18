@@ -14,7 +14,7 @@ public class PassGui extends JFrame implements ActionListener {
     
     PassMaker p = new PassMaker();
     
-    String passport = p.make(p.getName("Male"), p.getLName(), p.getDOB(), "male", p.getTerritory() , p.getExp() , p.getSerial());
+    String passport = p.make(p.getName("Male"), p.getLName(), p.getDOB(), Level.currSex , p.getTerritory() , p.getExp() , p.getSerial());
 	
 	//Action Listener for Exit Button
 	public void actionPerformed(ActionEvent e) {

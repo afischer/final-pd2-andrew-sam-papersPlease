@@ -139,6 +139,10 @@ public class PassMaker{
 	return filler;
     }
     
+    
+    //BELOW are methods to randomize the data on the passports.//
+    
+    
     public String getRandLine(String filename){
     	wordList = new ArrayList<String>();
     	try {
