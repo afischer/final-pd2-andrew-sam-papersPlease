@@ -12,193 +12,191 @@ import java.util.*;
 
 public class RuleGui extends javax.swing.JFrame {
 
-	public RuleGui() {
-		initComponents();
-	}
+    public RuleGui() {
+	initComponents();
+    }
 
-	public String ruleDay1 = "Only allow Arstotzkan citizens through the checkpoint.";
-	public String ruleDay3 = "Allow foreigners through the checkpoint only if their passports are valid. Passports should not be expired, and should match the holder's face, gender, etc.";
-	public String ruleDay5 = "";
+    public String bulletinTxt = "<html> Hello inspector. Welcome. <br><br> Congratualtions on winning the 1982 Labor Lottery. I'm sure you will find it an honor to work for your country. <br> <br> This book will be your guide through your new job. <br><br> Please click the Rules tab in order to view your responsibilities.";
 
-	public static String bulletinTxt = "";
-	public String ruleTxt = "";
-	public String docTxt = "";
-	public String copyTxt = "";
+    public String ruleTxt = "<html> Remember, current and valid passports should never be expired, and should always match the holder's face, gender, etc. <br><br> Rule established Day 1: Only allow Arstotzkan citizens with current and valid passports through the checkpoint. <br><br> Rule established Day 3: Allow foreigners with current and valid passports through the checkpoint as well. <br><br> Rule established Day 5: Antegria, Republica, & Kolechia are sending in spies to Arstotzka. Immediately interrogate and detain any citizens of those territories.";
+
+    public String docTxt = "";
+    public String copyTxt = "";
 	
 
-	private void initComponents() {
+    private void initComponents() {
 
-		tabbedPane = new JTabbedPane();
-		bulletinPane = new JLayeredPane();
-		bulletinText = new JLabel();
-		rulePane = new JPanel();
-		ruleText = new JLabel();
-		mapPane = new JPanel();
-		mapImage = new JLabel();
-		documentsPane = new JPanel();
-		documentText = new JLabel();
-		copyrightPane = new JPanel();
-		copyrightText = new JLabel();
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-
-		//bulletinTxt = "Hello inspector. Welcome to your first day.";
-		//ruleTxt = "This is where your rules will go.";
-		//docTxt = "Come here to learn about the various documents you will encounter.";
-
-		copyTxt = "<html><center><b>Copyright MOA.</b> <br> Glory to Arstoksa.";
-
-		this.setDefaultCloseOperation(HIDE_ON_CLOSE);
-		this.setAlwaysOnTop(true);
-
-		//Meh fonts. Forget it for now. 
-		//	File font_file = new File("BMmini.TTF");
-		//	Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
+	tabbedPane = new JTabbedPane();
+	bulletinPane = new JLayeredPane();
+	bulletinText = new JLabel();
+	rulePane = new JPanel();
+	ruleText = new JLabel();
+	mapPane = new JPanel();
+	mapImage = new JLabel();
+	documentsPane = new JPanel();
+	documentText = new JLabel();
+	copyrightPane = new JPanel();
+	copyrightText = new JLabel();
+	setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 
-		bulletinText.setText(bulletinTxt);
+	//bulletinTxt = "Hello inspector. Welcome to your first day.";
+	//ruleTxt = "This is where your rules will go.";
+	//docTxt = "Come here to learn about the various documents you will encounter.";
 
-		GroupLayout bulletinPaneLayout = new GroupLayout(bulletinPane); //wow this seems so redundant...
-		bulletinPane.setLayout(bulletinPaneLayout);
-		bulletinPaneLayout.setHorizontalGroup(
-				bulletinPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(bulletinPaneLayout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(bulletinText, GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
-						.addContainerGap())
-				);
-		bulletinPaneLayout.setVerticalGroup(
-				bulletinPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(bulletinPaneLayout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(bulletinText, GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
-						.addContainerGap())
-				);
-		bulletinPane.setLayer(bulletinText, JLayeredPane.DEFAULT_LAYER);
+	copyTxt = "<html><center><b>Copyright MOA.</b> <br> Glory to Arstotzka.";
 
-		tabbedPane.addTab("Bulletin", bulletinPane);
+	this.setDefaultCloseOperation(HIDE_ON_CLOSE);
+	this.setAlwaysOnTop(true);
 
-		ruleText.setText(ruleTxt);
+	//Meh fonts. Forget it for now. 
+	//	File font_file = new File("BMmini.TTF");
+	//	Font font = Font.createFont(Font.TRUETYPE_FONT, font_file);
 
-		GroupLayout rulePaneLayout = new GroupLayout(rulePane);
-		rulePane.setLayout(rulePaneLayout);
-		rulePaneLayout.setHorizontalGroup(
-				rulePaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(rulePaneLayout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(ruleText, GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
-						.addContainerGap())
-				);
-		rulePaneLayout.setVerticalGroup(
-				rulePaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(rulePaneLayout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(ruleText, GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
-						.addContainerGap())
-				);
 
-		tabbedPane.addTab("Rules", rulePane);
+	bulletinText.setText(bulletinTxt);
 
-		mapImage.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("").getPath() + "Map.png")); //Puts the image in the mapImage var
+	GroupLayout bulletinPaneLayout = new GroupLayout(bulletinPane); //wow this seems so redundant...
+	bulletinPane.setLayout(bulletinPaneLayout);
+	bulletinPaneLayout.setHorizontalGroup(
+					      bulletinPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+					      .addGroup(bulletinPaneLayout.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(bulletinText, GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+							.addContainerGap())
+					      );
+	bulletinPaneLayout.setVerticalGroup(
+					    bulletinPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+					    .addGroup(bulletinPaneLayout.createSequentialGroup()
+						      .addContainerGap()
+						      .addComponent(bulletinText, GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+						      .addContainerGap())
+					    );
+	bulletinPane.setLayer(bulletinText, JLayeredPane.DEFAULT_LAYER);
 
-		GroupLayout mapPaneLayout = new GroupLayout(mapPane);
-		mapPane.setLayout(mapPaneLayout);
+	tabbedPane.addTab("Bulletin", bulletinPane);
 
-		mapPaneLayout.setHorizontalGroup(
-				mapPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(mapPaneLayout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(mapImage)
-						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				);
-		mapPaneLayout.setVerticalGroup(
-				mapPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(mapPaneLayout.createSequentialGroup()
-						.addComponent(mapImage)
-						.addGap(0, 0, Short.MAX_VALUE))
-				);
+	ruleText.setText(ruleTxt);
 
-		tabbedPane.addTab("Map", mapPane);
+	GroupLayout rulePaneLayout = new GroupLayout(rulePane);
+	rulePane.setLayout(rulePaneLayout);
+	rulePaneLayout.setHorizontalGroup(
+					  rulePaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+					  .addGroup(rulePaneLayout.createSequentialGroup()
+						    .addContainerGap()
+						    .addComponent(ruleText, GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+						    .addContainerGap())
+					  );
+	rulePaneLayout.setVerticalGroup(
+					rulePaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+					.addGroup(rulePaneLayout.createSequentialGroup()
+						  .addContainerGap()
+						  .addComponent(ruleText, GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+						  .addContainerGap())
+					);
 
-		documentText.setText(docTxt);
+	tabbedPane.addTab("Rules", rulePane);
 
-		GroupLayout documentsPaneLayout = new GroupLayout(documentsPane);
-		documentsPane.setLayout(documentsPaneLayout);
-		documentsPaneLayout.setHorizontalGroup(
-				documentsPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(documentsPaneLayout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(documentText, GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
-						.addContainerGap())
-				);
-		documentsPaneLayout.setVerticalGroup(
-				documentsPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(documentsPaneLayout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(documentText, GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
-						.addContainerGap())
-				);
+	mapImage.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("").getPath() + "Map.png")); //Puts the image in the mapImage var
 
-		tabbedPane.addTab("Documents", documentsPane);
+	GroupLayout mapPaneLayout = new GroupLayout(mapPane);
+	mapPane.setLayout(mapPaneLayout);
 
-		copyrightText.setText(copyTxt);
+	mapPaneLayout.setHorizontalGroup(
+					 mapPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+					 .addGroup(mapPaneLayout.createSequentialGroup()
+						   .addContainerGap()
+						   .addComponent(mapImage)
+						   .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					 );
+	mapPaneLayout.setVerticalGroup(
+				       mapPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				       .addGroup(mapPaneLayout.createSequentialGroup()
+						 .addComponent(mapImage)
+						 .addGap(0, 0, Short.MAX_VALUE))
+				       );
 
-		GroupLayout copyrightPaneLayout = new GroupLayout(copyrightPane);
-		copyrightPane.setLayout(copyrightPaneLayout);
-		copyrightPaneLayout.setHorizontalGroup(
-				copyrightPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(copyrightPaneLayout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(copyrightText, GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
-						.addContainerGap())
-				);
-		copyrightPaneLayout.setVerticalGroup(
-				copyrightPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(copyrightPaneLayout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(copyrightText, GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
-						.addContainerGap())
-				);
+	tabbedPane.addTab("Map", mapPane);
 
-		tabbedPane.addTab("Copyright", copyrightPane);
+	documentText.setText(docTxt);
 
-		GroupLayout layout = new GroupLayout(getContentPane());
-		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(
-				layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-				.addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(tabbedPane))
-				);
-		layout.setVerticalGroup(
+	GroupLayout documentsPaneLayout = new GroupLayout(documentsPane);
+	documentsPane.setLayout(documentsPaneLayout);
+	documentsPaneLayout.setHorizontalGroup(
+					       documentsPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+					       .addGroup(documentsPaneLayout.createSequentialGroup()
+							 .addContainerGap()
+							 .addComponent(documentText, GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+							 .addContainerGap())
+					       );
+	documentsPaneLayout.setVerticalGroup(
+					     documentsPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+					     .addGroup(documentsPaneLayout.createSequentialGroup()
+						       .addContainerGap()
+						       .addComponent(documentText, GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+						       .addContainerGap())
+					     );
+
+	tabbedPane.addTab("Documents", documentsPane);
+
+	copyrightText.setText(copyTxt);
+
+	GroupLayout copyrightPaneLayout = new GroupLayout(copyrightPane);
+	copyrightPane.setLayout(copyrightPaneLayout);
+	copyrightPaneLayout.setHorizontalGroup(
+					       copyrightPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+					       .addGroup(copyrightPaneLayout.createSequentialGroup()
+							 .addContainerGap()
+							 .addComponent(copyrightText, GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+							 .addContainerGap())
+					       );
+	copyrightPaneLayout.setVerticalGroup(
+					     copyrightPaneLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+					     .addGroup(copyrightPaneLayout.createSequentialGroup()
+						       .addContainerGap()
+						       .addComponent(copyrightText, GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+						       .addContainerGap())
+					     );
+
+	tabbedPane.addTab("Copyright", copyrightPane);
+
+	GroupLayout layout = new GroupLayout(getContentPane());
+	getContentPane().setLayout(layout);
+	layout.setHorizontalGroup(
+				  layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				  .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+					    .addContainerGap()
+					    .addComponent(tabbedPane))
+				  );
+	layout.setVerticalGroup(
 				layout.createParallelGroup(GroupLayout.Alignment.LEADING)
 				.addComponent(tabbedPane, GroupLayout.Alignment.TRAILING)
 				);
 
-		pack();
-	}
+	pack();
+    }
 
 
-	public static void main(String args[]) {
+    public static void main(String args[]) {
 
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new RuleGui().setVisible(true);
-			}
-		});
-	}
+	java.awt.EventQueue.invokeLater(new Runnable() {
+		public void run() {
+		    new RuleGui().setVisible(true);
+		}
+	    });
+    }
 
-	// Variables declaration - do not modify                     
-	private JLayeredPane bulletinPane;
-	private JLabel bulletinText;
-	private JPanel copyrightPane;
-	private JLabel copyrightText;
-	private JLabel documentText;
-	private JPanel documentsPane;
-	private JLabel mapImage;
-	private JPanel mapPane;
-	private JPanel rulePane;
-	private JLabel ruleText;
-	private JTabbedPane tabbedPane;
-	// End of variables declaration                   
+    // Variables declaration - do not modify                     
+    private JLayeredPane bulletinPane;
+    private JLabel bulletinText;
+    private JPanel copyrightPane;
+    private JLabel copyrightText;
+    private JLabel documentText;
+    private JPanel documentsPane;
+    private JLabel mapImage;
+    private JPanel mapPane;
+    private JPanel rulePane;
+    private JLabel ruleText;
+    private JTabbedPane tabbedPane;
+    // End of variables declaration                   
 }

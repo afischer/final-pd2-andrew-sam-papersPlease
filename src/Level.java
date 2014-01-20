@@ -21,150 +21,150 @@ public class Level {
     //Main encounter protocol.
     public void encounter() throws IOException{
 	
-	    while(play != "no"){
-		rule = "none";
-		Scanner sc = new Scanner(System.in);
-		PassMaker p = new PassMaker();
-		BoothMaker b = new BoothMaker();
+	String[] guiArgs = {};
+	RuleGui.main(guiArgs);
+	
+	while(play != "no"){
+	    rule = "none";
+	    Scanner sc = new Scanner(System.in);
+	    PassMaker p = new PassMaker();
+	    BoothMaker b = new BoothMaker();
 		
-		String currPath = p.getClass().getClassLoader().getResource("").getPath();
+	    String currPath = p.getClass().getClassLoader().getResource("").getPath();
 		
-		p.photoParser(currPath + getRandFace()); //creates the passport of a person.
-		System.out.println(b.makeBooth(todaysDate(),"22","4.2")); //makes and prints the booth, using passport image.
-		try{Thread.sleep(1000);}catch(InterruptedException ex){}
+	    p.photoParser(currPath + getRandFace()); //creates the passport of a person.
+	    System.out.println(b.makeBooth(todaysDate(),"22","4.2")); //makes and prints the booth, using passport image.
+	    try{Thread.sleep(1000);}catch(InterruptedException ex){}
 		
-		System.out.println("Day " + thisLevel);
-		System.out.println(">> Papers, please.");
+	    System.out.println("Day " + thisLevel);
+	    System.out.println(">> Papers, please.");
 		
-		try{Thread.sleep(1000);}catch(InterruptedException ex){}
-		System.out.println("<< Here they are, sir.");
-		try{Thread.sleep(1000);}catch(InterruptedException ex){}
+	    try{Thread.sleep(1000);}catch(InterruptedException ex){}
+	    System.out.println("<< Here they are, sir.");
+	    try{Thread.sleep(1000);}catch(InterruptedException ex){}
 		
-		while(respond == "none") {
-		    if (respond != "yes" || respond != "no") {
-			System.out.println("   Choose an option: \n     a. take papers \n     b. deny access");
-			answer = sc.next();
+	    while(respond == "none") {
+		if (respond != "yes" || respond != "no") {
+		    System.out.println("   Choose an option: \n     a. examine papers \n     b. deny access");
+		    answer = sc.next();
 			
-			if (answer.equals("a")){
-			    System.out.println("   Papers picked up.");
-			    try{Thread.sleep(1000);}catch(InterruptedException ex){}
-			    System.out.println("<< Everything should be in order. I'm visiting friends.");
-			    String[] guiArgs = {};
-			    PassGui.main(guiArgs);
-			    respond = "yes";
-			}
-			else if(answer.equals("b")){
-			    System.out.println(">> These papers are not correct.");
-			    state = "denied";
-			    respond = "no";
-			}
-			else respond = "none";
+		    if (answer.equals("a")){
+			System.out.println("   Papers picked up.");
+			try{Thread.sleep(1000);}catch(InterruptedException ex){}
+			System.out.println("<< Everything should be in order. I'm visiting friends.");
+			PassGui.main(guiArgs);
+			respond = "yes";
 		    }
-		}   
+		    else if(answer.equals("b")){
+			System.out.println(">> These papers are not correct.");
+			state = "denied";
+			respond = "no";
+		    }
+		    else respond = "none";
+		}
+	    }   
 		
-		//catch added
-		while (state == "none"){ //makes sure that when state is none, options are always shown
-		    if (state != "accepted" || state != "denied" || state != "questioning") { //Stops the options from being shown when state given
-			//System.out.println(state);
-			System.out.println("   Choose an option: \n     a. allow through \n     b. deny access \n     c. interrogate entrant \n     d. read rulebook");
-			answer = sc.next();
+	    //catch added
+	    while (state == "none"){ //makes sure that when state is none, options are always shown
+		if (state != "accepted" || state != "denied" || state != "questioning") { //Stops the options from being shown when state given
+		    //System.out.println(state);
+		    System.out.println("   Choose an option: \n     a. allow through \n     b. deny access \n     c. interrogate entrant \n     d. read rulebook");
+		    answer = sc.next();
 			
-			if (answer.equals("a")){
-			    try{Thread.sleep(500);}catch(InterruptedException ex){}
-			    System.out.println(">> Go through. Cause no trouble. Glory to Arstoksa.");
-			    state = "accepted";
-			}
-			else if(answer.equals("b")){
-			    try{Thread.sleep(500);}catch(InterruptedException ex){}
-			    System.out.println(">> These papers are not correct. Please leave.");
-			    state = "denied";
-			}
-			else if(answer.equals("c")){
-			    state = "questioning";
-			    questionProtocol(); //Begins questioning
-			}
-			else if(answer.equals("d")){
-			    String[] guiArgs = {};
-			    RuleGui.main(guiArgs);
-			}
-		    }
-		}
-		
-		if (state.equals("accepted")) {
-		    inCount++;
-		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
-		    System.out.println("<< " + getRandLine(getFilePath() + "dialogue/thanks.txt"));
-		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
-		    System.out.println("<< Glory to Arstoksa.");
-		    try{Thread.sleep(500);}catch(InterruptedException ex){}
-		    if (p.valid = false) {
-			citationCount++;
-			System.out.println("   PRINTING: MOA CITATION - PASSPORT INVALID");
+		    if (answer.equals("a")){
 			try{Thread.sleep(500);}catch(InterruptedException ex){}
+			System.out.println(">> Go through. Cause no trouble. Glory to Arstotzka.");
+			state = "accepted";
 		    }
-		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount + ", Citations:" + citationCount);
-		    thisLevel++;
-		    System.out.println("It is now Day " + thisLevel);
-		}
-		if (state.equals("denied")) {
-		    outCount++;
-		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
-		    System.out.println("<< " + getRandLine(getFilePath() + "dialogue/nothanks.txt"));
-		    try{Thread.sleep(500);}catch(InterruptedException ex){}
-		    if (p.valid = true) {
-			citationCount++;
-			System.out.println("   PRINTING: MOA CITATION - CREDENTIALS VALID, UNNEEDED DENIAL");
+		    else if(answer.equals("b")){
 			try{Thread.sleep(500);}catch(InterruptedException ex){}
+			System.out.println(">> These papers are not correct. Please leave.");
+			state = "denied";
 		    }
-		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount + ", Citations:" + citationCount);
-		    thisLevel++;
-		    System.out.println("It is now Day " + thisLevel);
-		}
-		if (state.equals("detained")) {
-		    detCount++;
-		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
-		    System.out.println("<< " + getRandLine(getFilePath() + "dialogue/nothanks.txt"));
-		    try{Thread.sleep(500);}catch(InterruptedException ex){}
-		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount + ", Citations:" + citationCount);  
-		    thisLevel++;
-		    System.out.println("It is now Day " + thisLevel);
-		}
-		
-		System.out.println("\n   Would you like to play for another day? \n    a. yes \n    b. no");
-		answer = sc.next();
-		if (answer.equals("b")){
-		    System.out.println("   Thank you for playing. Glory to Arstoksa. Goodbye.");
-		    play = "no";
-		    System.exit(0);
-		}
-		else if (answer.equals("a")) {
-		    if (thisLevel == 3 || thisLevel == 5) {
-			System.out.println("   A new rule will be added. Please input 'R' in order to see the new rule.");
-			while(rule == "none") {
-			    if(rule != "yes") {
-				answer = sc.next();
-				if (answer.equals("R")) {
-				    String[] guiArgs = {};
-				    RuleGui.main(guiArgs);
-				    rule = "yes";
-				    play = "yes";
-				    respond = "none";
-				    state = "none";
-				    answer = "";
-				}
-			    }
-			    else rule = "none";
-			}
+		    else if(answer.equals("c")){
+			state = "questioning";
+			questionProtocol(); //Begins questioning
 		    }
-		    else {
-			System.out.println("  Let us continue.");
-			play = "yes";
-			respond = "none";
-			state = "none";
-			answer = "";
+		    else if(answer.equals("d")){
+			RuleGui.main(guiArgs);
 		    }
 		}
 	    }
+		
+	    if (state.equals("accepted")) {
+		inCount++;
+		try{Thread.sleep(1000);}catch(InterruptedException ex){}
+		System.out.println("<< " + getRandLine(getFilePath() + "dialogue/thanks.txt"));
+		try{Thread.sleep(1000);}catch(InterruptedException ex){}
+		System.out.println("<< Glory to Arstotzka.");
+		try{Thread.sleep(500);}catch(InterruptedException ex){}
+		if (p.valid = false) {
+		    citationCount++;
+		    System.out.println("   PRINTING: MOA CITATION - PASSPORT INVALID");
+		    try{Thread.sleep(500);}catch(InterruptedException ex){}
+		}
+		System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount + ", Citations:" + citationCount);
+		thisLevel++;
+		System.out.println("It is now Day " + thisLevel);
+	    }
+	    if (state.equals("denied")) {
+		outCount++;
+		try{Thread.sleep(1000);}catch(InterruptedException ex){}
+		System.out.println("<< " + getRandLine(getFilePath() + "dialogue/nothanks.txt"));
+		try{Thread.sleep(500);}catch(InterruptedException ex){}
+		if (p.valid = true) {
+		    citationCount++;
+		    System.out.println("   PRINTING: MOA CITATION - CREDENTIALS VALID, UNNEEDED DENIAL");
+		    try{Thread.sleep(500);}catch(InterruptedException ex){}
+		}
+		System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount + ", Citations:" + citationCount);
+		thisLevel++;
+		System.out.println("It is now Day " + thisLevel);
+	    }
+	    if (state.equals("detained")) {
+		detCount++;
+		try{Thread.sleep(1000);}catch(InterruptedException ex){}
+		System.out.println("<< " + getRandLine(getFilePath() + "dialogue/nothanks.txt"));
+		try{Thread.sleep(500);}catch(InterruptedException ex){}
+		System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount + ", Citations:" + citationCount);  
+		thisLevel++;
+		System.out.println("It is now Day " + thisLevel);
+	    }
+		
+	    System.out.println("\n   Would you like to play for another day? \n    a. yes \n    b. no");
+	    answer = sc.next();
+	    if (answer.equals("b")){
+		System.out.println("   Thank you for playing. Glory to Arstotzka. Goodbye.");
+		play = "no";
+		System.exit(0);
+	    }
+	    else if (answer.equals("a")) {
+		if (thisLevel%2 == 1) {
+		    System.out.println("   A new rule will be added. Please examine the Rule Book by typing 'R'.");
+		    while(rule == "none") {
+			if(rule != "yes") {
+			    answer = sc.next();
+			    if (answer.equals("R")) {
+				RuleGui.main(guiArgs);
+				rule = "yes";
+				play = "yes";
+				respond = "none";
+				state = "none";
+				answer = "";
+			    }
+			}
+			else rule = "none";
+		    }
+		}
+		else {
+		    System.out.println("  Let us continue.");
+		    play = "yes";
+		    respond = "none";
+		    state = "none";
+		    answer = "";
+		}
+	    }
+	}
     }
     
     
@@ -208,7 +208,7 @@ public class Level {
 		}
 		else if(answer.equals("c")){
 		    try{Thread.sleep(500);}catch(InterruptedException ex){}
-		    System.out.println(">> This issuing city is invalid. It does not exist.");
+		    System.out.println(">> This issuing city is invalid.");
 		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
 		    System.out.println("<< Huh? Must be typo.");
 		    try{Thread.sleep(1000);}catch(InterruptedException ex){}

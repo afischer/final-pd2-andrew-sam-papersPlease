@@ -31,47 +31,47 @@ public class BoothMaker{
 
 	String booth = "";
 
-	booth += " __________________________________________ \n";
-	booth += "|                                          |\n";
+	booth += " ___________________________________________ \n";
+	booth += "|                                           |\n";
 
 	//adding photo to booth printout
 	booth += "|             ";
 	booth += p.photo[0];
-	booth += "              |\n";
+	booth += "               |\n";
 	booth += "|             ";
 	booth += p.photo[1];
-	booth += "              |\n";
+	booth += "               |\n";
 	booth += "|             ";
 	booth += p.photo[2];
-	booth += "              |\n";
+	booth += "               |\n";
 	booth += "|             ";
 	booth += p.photo[3];
-	booth += "              |\n";
+	booth += "               |\n";
 	booth += "|             ";
 	booth += p.photo[4];
-	booth += "              |\n";
+	booth += "               |\n";
 	booth += "|             ";
 	booth += p.photo[5];
-	booth += "              |\n";
+	booth += "               |\n";
 	booth += "|             ";
 	booth += p.photo[6];
-	booth += "              |\n";
+	booth += "               |\n";
 	booth += "|             ";
 	booth += p.photo[7];
-	booth += "              |\n";
+	booth += "               |\n";
 	booth += "|             ";
 	booth += p.photo[8];
-	booth += "              |\n";
+	booth += "               |\n";
 	booth += "|             ";
 	booth += p.photo[9];
-	booth += "              |\n";
+	booth += "               |\n";
 
 
-	booth += "|----------|-----------------|-------------|\n";
-	booth += "|          |                 |             |\n";
-	booth += "|   DATE:  |Arstoksa Ministry|  WT/HEIGHT: |\n";
-	booth += "| "+ date +" |  of  Admission  |  " + weight + "kg/" + height + "m  |\n";
-	booth += "|__________|_________________|_____________|\n";
+	booth += "|----------|------------------|-------------|\n";
+	booth += "|          |                  |             |\n";
+	booth += "|   DATE:  |Arstotzka Ministry|  WT/HEIGHT: |\n";
+	booth += "| "+ date +" |  of  Admission   |  " + weight + "kg/" + height + "m  |\n";
+	booth += "|__________|__________________|_____________|\n";
 	booth += "\n";
 	
 	return booth;
