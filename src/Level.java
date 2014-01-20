@@ -9,9 +9,8 @@ public class Level {
 	int inCount = 0; 		//How many you have allowed in
 	int outCount = 0;		//How many you have kept out
 	int detCount = 0;		//How many you have detained
-	int citations = 0;
-	int thisLevel = 0;
-	static String btext = "hello world";
+	int citationCount = 0;
+	static int thisLevel = 0;
 	
     
     public static String currSex = "";
@@ -91,21 +90,31 @@ public class Level {
 		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
 		    System.out.println("<< Glory to Arstoksa.");
 		    try{Thread.sleep(500);}catch(InterruptedException ex){}
-		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount);
+		    if (p.valid = false) {
+		    	citationCount++;
+			    System.out.println("   PRINTING: MOA CITATION - PASSPORT INVALID");
+			    try{Thread.sleep(500);}catch(InterruptedException ex){}
+		    }
+		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount + ", Citations:" + citationCount);
 		}
 		if (state.equals("denied")) {
 		    outCount++;
 		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
 		    System.out.println("<< " + getRandLine(getFilePath() + "dialogue/nothanks.txt"));
 		    try{Thread.sleep(500);}catch(InterruptedException ex){}
-		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount);
+		    if (p.valid = true) {
+		    	citationCount++;
+			    System.out.println("   PRINTING: MOA CITATION - CREDENTIALS VALID, UNNEEDED DENIAL");
+			    try{Thread.sleep(500);}catch(InterruptedException ex){}
+		    }
+		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount + ", Citations:" + citationCount);
 		}
 		if (state.equals("detained")) {
 		    detCount++;
 		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
 		    System.out.println("<< " + getRandLine(getFilePath() + "dialogue/nothanks.txt"));
 		    try{Thread.sleep(500);}catch(InterruptedException ex){}
-		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount);  
+		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount + ", Citations:" + citationCount);  
 		}
 	}
 	
