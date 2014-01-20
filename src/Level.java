@@ -9,8 +9,10 @@ public class Level {
 	int inCount = 0; 		//How many you have allowed in
 	int outCount = 0;		//How many you have kept out
 	int detCount = 0;		//How many you have detained
-	boolean validInpt = false;//THIS IS NO LONGER NEEDED REMOVE ME!!
-    int thisLevel = 0;
+	int citations = 0;
+	int thisLevel = 0;
+	static String btext = "hello world";
+	
     
     public static String currSex = "";
     private ArrayList<String> wordList;
@@ -19,6 +21,7 @@ public class Level {
     //Main encounter protocol.
 	public void encounter() throws IOException{
 
+		System.out.println("Day "+thisLevel);
 		Scanner sc = new Scanner(System.in);
 		PassMaker p = new PassMaker();
 		BoothMaker b = new BoothMaker();
@@ -27,7 +30,7 @@ public class Level {
 
 
 		p.photoParser(currPath + getRandFace()); //creates the passport of a person.
-		System.out.println(b.makeBooth("03/12/82","22","4.2")); //makes and prints the booth, using passport image.
+		System.out.println(b.makeBooth(todaysDate(),"22","4.2")); //makes and prints the booth, using passport image.
 		try{Thread.sleep(1000);}catch(InterruptedException ex){}
 
 
@@ -64,19 +67,15 @@ public class Level {
 					try{Thread.sleep(500);}catch(InterruptedException ex){}
 					System.out.println(">> Go through. Cause no trouble. Glory to Arstoksa.");
 					state = "accepted";
-					validInpt = true;
 				}
 				else if(answer.equals("b")){
 					try{Thread.sleep(500);}catch(InterruptedException ex){}
 					System.out.println(">> These papers are not correct. Please leave.");
 					state = "denied";
-					validInpt = true;
 				}
 				else if(answer.equals("c")){
 					state = "questioning";
-					//break; //??
-					questionProtocol();
-					// Put in questioning protocol
+					questionProtocol(); //Begins questioning
 				}
 				else if(answer.equals("d")){
 					String[] guiArgs = {};
@@ -106,7 +105,7 @@ public class Level {
 		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
 		    System.out.println("<< " + getRandLine(getFilePath() + "nothanks.txt"));
 		    try{Thread.sleep(500);}catch(InterruptedException ex){}
-		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount);
+		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount);  
 		}
 	}
 	
@@ -193,7 +192,6 @@ public class Level {
 					System.out.println(">> You can not go through. Please leave.");
 					try{Thread.sleep(1000);}catch(InterruptedException ex){}
 					state = "denied";
-					validInpt = true;
 					break; //returns to the main encounter method
 				}
 				
@@ -242,6 +240,11 @@ public class Level {
 			return "people/f" + (int)(1 + (8 * Math.random())) + ".txt";
 		}
 	}
+	
+	public String todaysDate(){
+		return "03/"+ (int)(10 + thisLevel) + "/82";
+	}
+	
 	//END AUXILIARY FUNCTIONS//
 	
 }

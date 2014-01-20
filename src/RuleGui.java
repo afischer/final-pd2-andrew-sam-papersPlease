@@ -20,10 +20,11 @@ public class RuleGui extends javax.swing.JFrame {
 	public String ruleDay3 = "Allow foreigners through the checkpoint only if their passports are valid. Passports should not be expired, and should match the holder's face, gender, etc.";
 	public String ruleDay5 = "";
 
-	public String bulletinTxt = "";
+	public String bulletinTxt = Level.btext;
 	public String ruleTxt = "";
 	public String docTxt = "";
 	public String copyTxt = "";
+	
 
 	private void initComponents() {
 
