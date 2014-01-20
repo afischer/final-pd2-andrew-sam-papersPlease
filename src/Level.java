@@ -87,7 +87,7 @@ public class Level {
 		if (state.equals("accepted")) {
 		    inCount++;
 		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
-		    System.out.println("<< " + getRandLine(getFilePath() + "thanks.txt"));
+		    System.out.println("<< " + getRandLine(getFilePath() + "dialogue/thanks.txt"));
 		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
 		    System.out.println("<< Glory to Arstoksa.");
 		    try{Thread.sleep(500);}catch(InterruptedException ex){}
@@ -96,14 +96,14 @@ public class Level {
 		if (state.equals("denied")) {
 		    outCount++;
 		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
-		    System.out.println("<< " + getRandLine(getFilePath() + "nothanks.txt"));
+		    System.out.println("<< " + getRandLine(getFilePath() + "dialogue/nothanks.txt"));
 		    try{Thread.sleep(500);}catch(InterruptedException ex){}
 		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount);
 		}
 		if (state.equals("detained")) {
 		    detCount++;
 		    try{Thread.sleep(1000);}catch(InterruptedException ex){}
-		    System.out.println("<< " + getRandLine(getFilePath() + "nothanks.txt"));
+		    System.out.println("<< " + getRandLine(getFilePath() + "dialogue/nothanks.txt"));
 		    try{Thread.sleep(500);}catch(InterruptedException ex){}
 		    System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount);  
 		}
