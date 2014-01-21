@@ -26,7 +26,7 @@ public class PassGui extends JFrame implements ActionListener {
     public PassGui() {
 	this.setTitle("ARSTOTZKA MOA Passport Viewer");
 	this.setSize(800,480);
-	this.setLocation(100,100);
+	this.setLocation(400,400);
 	this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 	this.setAlwaysOnTop(true);
 

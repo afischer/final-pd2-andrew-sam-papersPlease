@@ -18,7 +18,7 @@ public class RuleGui extends javax.swing.JFrame {
 
     public String bulletinTxt = "<html> Hello inspector. Welcome. <br><br> Congratualtions on winning the 1982 Labor Lottery. I'm sure you will find it an honor to work for your country. <br> <br> This book will be your guide through your new job. <br><br> Please click the Rules tab in order to view your responsibilities.";
 
-    public String ruleTxt = "<html> Remember, current and valid passports should never be expired, and should always match the holder's face, gender, etc. <br><br> Rule established Day 1: Only allow Arstotzkan citizens with current and valid passports through the checkpoint. <br><br> Rule established Day 3: Allow foreigners with current and valid passports through the checkpoint as well. <br><br> Rule established Day 5: Antegria, Republica, & Kolechia are sending in spies to Arstotzka. Immediately interrogate and detain any citizens of those territories.";
+    public String ruleTxt = "<html> Remember, current and valid passports should never be expired, and should always match the holder's face, gender, etc. <br><br> Rule established Day 1: Only allow Arstotzkan citizens with current and valid passports through the checkpoint. <br><br> Rule established Day 2: Allow foreigners with current and valid passports through the checkpoint as well. <br><br> Rule established Day 3: Antegria, Republica, & Kolechia are sending in spies to Arstotzka. Immediately interrogate and detain any citizens of those territories.";
 
     public String docTxt = "";
     public String copyTxt = "";

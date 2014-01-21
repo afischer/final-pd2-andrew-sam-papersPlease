@@ -117,7 +117,7 @@ public class PassMaker{
 		passport +="|/====================================\\:/====================================\\|\n";
 		passport +="'------------------------------------~___~------------------------------------'";
 
-		//passport += "" + valid; //USE FOR DEBUGGING ONLY
+		passport += "" + valid; //USE FOR DEBUGGING ONLY
 		
 		// FIN - The return statement
 		return passport;       
@@ -169,7 +169,7 @@ public class PassMaker{
 		else if (sex.equals("Male")){
 			return getRandLine(this.getClass().getClassLoader().getResource("").getPath() + "mNames.txt");
 		}
-		else {return "error.";}
+		else {return "error. Sex invalid.";}
 	}
 
 	//returns a random last name.
