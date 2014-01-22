@@ -44,8 +44,10 @@ public class RuleGui extends javax.swing.JFrame {
 	//ruleTxt = "This is where your rules will go.";
 	//docTxt = "Come here to learn about the various documents you will encounter.";
 
-	copyTxt = "<html><center><b>Copyright MOA.</b> <br> Glory to Arstotzka.";
-
+	copyTxt = "<html><center><b>Copyright MOA.</b> <br> Glory to Arstotzka. <br><br><br> Arstokzan Ministry of Admission <br> Rules & Regulations for Inspectors <br><br> =========== <br><br> 1982-1983 Edition <br> IBSN: 978-0-452-28423-4 <br><br> DO NOT DISTRUBUTE <br> UNDER SEVERE PENALTY <br><br> ============ <br><br><i> Original Papers Please game By <br> Lucas Pope <br> dukope.com</i>";
+	copyrightText.setHorizontalTextPosition(JLabel.CENTER);
+	copyrightText.setVerticalTextPosition(JLabel.CENTER);
+		
 	this.setDefaultCloseOperation(HIDE_ON_CLOSE);
 	this.setAlwaysOnTop(true);
 

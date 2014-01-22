@@ -69,7 +69,7 @@ public class Level {
 			while (state == "none"){ //makes sure that when state is none, options are always shown
 				if (state != "accepted" || state != "denied" || state != "questioning") { //Stops the options from being shown when state given
 					//System.out.println(state);
-					System.out.println(p.valid);
+					//System.out.println(p.getValid);
 					System.out.println("   Choose an option: \n     a. allow through \n     b. deny access \n     c. interrogate entrant \n     d. read rulebook");
 					answer = sc.next();
 
@@ -100,8 +100,8 @@ public class Level {
 				try{Thread.sleep(1000);}catch(InterruptedException ex){}
 				System.out.println("<< Glory to Arstotzka.");
 				try{Thread.sleep(500);}catch(InterruptedException ex){}
-				System.out.println(p.valid);
-				if (p.valid = false) { //THIS NEEDS TO BE FIXED
+				System.out.println(p.getValid());
+				if (p.getValid() == false) { //THIS NEEDS TO BE FIXED
 					citationCount++;
 					System.out.println("   PRINTING: MOA CITATION - PASSPORT INVALID");
 					try{Thread.sleep(500);}catch(InterruptedException ex){}
@@ -113,7 +113,9 @@ public class Level {
 				if (inCount+outCount+detCount >= 10) {
 					continueGame();
 					thisLevel++;
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
 					System.out.println("It is now Day " + thisLevel);
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
 				}				
 				
 			}
@@ -122,7 +124,7 @@ public class Level {
 				try{Thread.sleep(1000);}catch(InterruptedException ex){}
 				System.out.println("<< " + getRandLine(getFilePath() + "dialogue/nothanks.txt"));
 				try{Thread.sleep(500);}catch(InterruptedException ex){}
-				if (p.valid = true) { //THIS NEEDS TO BE FIXED ALWAYS READ AS TRUE
+				if (p.getValid() == true) { //THIS NEEDS TO BE FIXED ALWAYS READ AS TRUE
 					citationCount++;
 					System.out.println("   PRINTING: MOA CITATION - CREDENTIALS VALID, UNNEEDED DENIAL");
 					try{Thread.sleep(500);}catch(InterruptedException ex){}
@@ -299,6 +301,8 @@ public class Level {
 
 
 	//AUXILIARY FUNCTIONS//
+	
+	
 	public String getRandLine(String filename){
 		wordList = new ArrayList<String>();
 		try {

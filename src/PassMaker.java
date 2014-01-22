@@ -37,6 +37,10 @@ public class PassMaker{
 		}
 	}
 
+	
+	public boolean getValid(){
+		return valid;
+	}
 
 	//Builds the actuall passport string ascii art.
 	public String make(String fname, String lname, String dob, String sex, String iss, String exp, String serial){
