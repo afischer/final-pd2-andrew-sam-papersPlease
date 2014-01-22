@@ -114,7 +114,7 @@ public class Level {
 				answer = "none";
 				respond = "none";
 				state = "none";
-				if (inCount+outCount+detCount >= 12) {
+				if (inCount+outCount+detCount >= 12) {//CHANGE TO SHORTEN DAYS (1 of 3)
 					endOfDayProtocol();
 					continueGame();
 					thisLevel++;
@@ -129,7 +129,7 @@ public class Level {
 				try{Thread.sleep(1000);}catch(InterruptedException ex){}
 				System.out.println("<< " + getRandLine(getFilePath() + "dialogue/nothanks.txt"));
 				try{Thread.sleep(500);}catch(InterruptedException ex){}
-				if (p.getValid() == true) { //THIS NEEDS TO BE FIXED ALWAYS READ AS TRUE
+				if (p.getValid() == true) { //fixed.
 					citationCount++;
 					System.out.println("   PRINTING: MOA CITATION - CREDENTIALS VALID, UNNEEDED DENIAL");
 					try{Thread.sleep(500);}catch(InterruptedException ex){}
@@ -138,7 +138,7 @@ public class Level {
 				answer = "none";
 				respond = "none";
 				state = "none";
-				if (inCount+outCount+detCount >= 12) {
+				if (inCount+outCount+detCount >= 12) { //CHANGE TO SHORTEN DAYS (2 of 3)
 					endOfDayProtocol();
 					continueGame();
 					thisLevel++;
@@ -155,7 +155,7 @@ public class Level {
 				answer = "none";
 				respond = "none";
 				state = "none";
-				if (inCount+outCount+detCount >= 12) {
+				if (inCount+outCount+detCount >= 12) { //CHANGE TO SHORTEN DAYS (3of3)
 					endOfDayProtocol();
 					continueGame();
 					thisLevel++;
