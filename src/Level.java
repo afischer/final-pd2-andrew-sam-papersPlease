@@ -11,19 +11,23 @@ public class Level {
 	int outCount = 0;		//How many you have kept out
 	int detCount = 0;		//How many you have detained
 	int citationCount = 0;
-	static int thisLevel = 1;
+	public int thisLevel = 1;
 	String[] guiArgs = {};
+	int credits = 0;
 
 
 	public static String currSex = "";
 	private ArrayList<String> wordList;
 
+	public void setLevel(int levelNum){
+		thisLevel = levelNum;
+	}
 
 	//Main encounter protocol.
 	public void encounter() throws IOException{
 
 		//String[] guiArgs = {};
-		RuleGui.main(guiArgs);
+		//RuleGui.main(guiArgs);
 
 		while(play != "no"){ //loop for multiple peoples
 			rule = "none";
@@ -100,7 +104,7 @@ public class Level {
 				try{Thread.sleep(1000);}catch(InterruptedException ex){}
 				System.out.println("<< Glory to Arstotzka.");
 				try{Thread.sleep(500);}catch(InterruptedException ex){}
-				System.out.println(p.getValid());
+				//System.out.println(p.getValid());
 				if (p.getValid() == false) { //THIS NEEDS TO BE FIXED
 					citationCount++;
 					System.out.println("   PRINTING: MOA CITATION - PASSPORT INVALID");
@@ -110,14 +114,15 @@ public class Level {
 				answer = "none";
 				respond = "none";
 				state = "none";
-				if (inCount+outCount+detCount >= 10) {
+				if (inCount+outCount+detCount >= 12) {
+					endOfDayProtocol();
 					continueGame();
 					thisLevel++;
 					try{Thread.sleep(1000);}catch(InterruptedException ex){}
 					System.out.println("It is now Day " + thisLevel);
 					try{Thread.sleep(1000);}catch(InterruptedException ex){}
 				}				
-				
+
 			}
 			if (state.equals("denied")) {
 				outCount++;
@@ -133,12 +138,13 @@ public class Level {
 				answer = "none";
 				respond = "none";
 				state = "none";
-				if (inCount+outCount+detCount >= 10) {
+				if (inCount+outCount+detCount >= 12) {
+					endOfDayProtocol();
 					continueGame();
 					thisLevel++;
 					System.out.println("It is now Day " + thisLevel);
 				}				
-				
+
 			}
 			if (state.equals("detained")) {
 				detCount++;
@@ -149,20 +155,17 @@ public class Level {
 				answer = "none";
 				respond = "none";
 				state = "none";
-				if (inCount+outCount+detCount >= 10) {
+				if (inCount+outCount+detCount >= 12) {
+					endOfDayProtocol();
 					continueGame();
 					thisLevel++;
 					System.out.println("It is now Day " + thisLevel);
 				}
-				
+
 			}
 
 		}
 	}
-
-
-
-
 
 
 	public void questionProtocol() throws IOException {
@@ -255,10 +258,85 @@ public class Level {
 		}
 	}
 
+
+	public void endOfDayProtocol() throws IOException{
+		String answer = "";
+		state = "";
+		Scanner sc = new Scanner(System.in);
+
+
+		try{Thread.sleep(1000);}catch(InterruptedException ex){}
+		System.out.println("END OF DAY " + thisLevel + ":");
+		try{Thread.sleep(1000);}catch(InterruptedException ex){}
+		System.out.println("Your daily credit check is handed to you on your way out.");
+		credits += (inCount*5)+(detCount*10);
+		try{Thread.sleep(1000);}catch(InterruptedException ex){}
+		System.out.println("Bank of Arstoksa Stmt: Balance: " + credits + " credits.");
+		try{Thread.sleep(1000);}catch(InterruptedException ex){}
+		if (credits < 25){
+			System.out.println("Bank of Arstoksa ALERT: Balance insufficent for rent.");
+			try{Thread.sleep(1000);}catch(InterruptedException ex){}
+			System.out.println("Arstoksa has no patience for debtors.");
+			try{Thread.sleep(1000);}catch(InterruptedException ex){}
+			System.out.println("You are placed in debtors prison, and sentenced to forced labor.");
+			try{Thread.sleep(1000);}catch(InterruptedException ex){}
+			System.out.println("The safety of your family is uncertain.");
+			try{Thread.sleep(1000);}catch(InterruptedException ex){}
+			System.out.println("Glory to Arstoksa!");
+			System.exit(0);
+		}
+		System.out.println("Bank of Arstoksa Stmt: 15 Credits removed for mandated rent.");
+		try{Thread.sleep(1000);}catch(InterruptedException ex){}
+		credits -= 15;
+		System.out.println("Bank of Arstoksa Stmt: Balance: " + credits + " credits.");
+		try{Thread.sleep(1000);}catch(InterruptedException ex){}
+
+		while (state != "done"){
+			System.out.println("   Choose an option:\n     a. pay for heat - 5 credits \n     b. pay for food - 5 credits\n     c. pay for medicine - 10 credits\n     d. go to sleep");
+			answer = sc.next();
+
+			if (answer.equals("a")){
+				try{Thread.sleep(500);}catch(InterruptedException ex){}
+				System.out.println("-- Heating Bill Paid.");
+				try{Thread.sleep(1000);}catch(InterruptedException ex){}
+				credits -= 5;
+				System.out.println("Bank of Arstoksa Stmt: Balance: " + credits + " credits.");
+
+
+			}
+			else if(answer.equals("b")){
+				try{Thread.sleep(500);}catch(InterruptedException ex){}
+				System.out.println("-- Rations Purchased.");
+				try{Thread.sleep(1000);}catch(InterruptedException ex){}
+				credits -= 5;
+				System.out.println("Bank of Arstoksa Stmt: Balance: " + credits + " credits.");
+
+			}
+			else if(answer.equals("c")){
+				try{Thread.sleep(500);}catch(InterruptedException ex){}
+				System.out.println("-- Medicine purchased.");
+				try{Thread.sleep(1000);}catch(InterruptedException ex){}
+				credits -= 10;
+				System.out.println("Bank of Arstoksa Stmt: Balance: " + credits + " credits.");
+
+			}
+			else if(answer.equals("d")){
+				try{Thread.sleep(500);}catch(InterruptedException ex){}
+				System.out.println("After a night of rest, you return to your glorious workplace.");
+				try{Thread.sleep(1000);}catch(InterruptedException ex){}
+				state = "done";
+				break;
+
+			}
+
+		}
+	}
+
+
 	public void continueGame(){
 		Scanner sc = new Scanner(System.in);
 		String answer = "";
-		
+
 		System.out.println("\n   Would you like to play for another day? \n    a. yes \n    b. no");
 		answer = sc.next();
 		if (answer.equals("b")){
@@ -273,7 +351,7 @@ public class Level {
 					if(rule != "yes") {
 						answer = sc.next();
 						if (answer.equals("R")) {
-							
+
 							RuleGui.main(guiArgs);
 							rule = "yes";
 							play = "yes";
@@ -293,7 +371,7 @@ public class Level {
 				answer = "";
 			}
 		}
-		
+
 	}
 
 
@@ -301,8 +379,8 @@ public class Level {
 
 
 	//AUXILIARY FUNCTIONS//
-	
-	
+
+
 	public String getRandLine(String filename){
 		wordList = new ArrayList<String>();
 		try {
