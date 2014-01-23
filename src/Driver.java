@@ -2,23 +2,25 @@ import java.io.*;
 import java.util.*;
 
 public class Driver {
-	int currLevel = 1;
+	//static int currLevel = 1;
 	
-	public String getLevel(){
-		return "Level" + currLevel;
-	}
 	
 	
 	public static void main(String[] args) throws IOException {
+		Level l = new Level();
 		
-		Level1 l = new Level1();
+		Level1 l1 = new Level1();
+		Level2 l2 = new Level2();
 		
 		
-		l.runLevel();
-
+		if (l.getThisLevel() == 1){
+			l1.runLevel();
+		}
+		else if (l.getThisLevel() == 2){
+			l2.runLevel();
+		}
 
 	}
-
 
 }
 
