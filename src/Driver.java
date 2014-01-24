@@ -2,7 +2,11 @@ import java.io.*;
 import java.util.*;
 
 public class Driver {
-	//static int currLevel = 1;
+	public static int currLevel = 1;
+	
+	public static void levelUp(){
+		currLevel++;
+	}
 	
 	
 	
@@ -12,11 +16,12 @@ public class Driver {
 		Level1 l1 = new Level1();
 		Level2 l2 = new Level2();
 		
+		System.out.println(currLevel); //HOLY BALLS FIX THIS
 		
-		if (l.getThisLevel() == 1){
+		if (currLevel == 1){
 			l1.runLevel();
 		}
-		else if (l.getThisLevel() == 2){
+		if (currLevel == 2){
 			l2.runLevel();
 		}
 

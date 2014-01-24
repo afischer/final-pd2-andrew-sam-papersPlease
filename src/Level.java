@@ -11,12 +11,12 @@ public class Level {
 	int outCount = 0;		//How many you have kept out
 	int detCount = 0;		//How many you have detained
 	int citationCount = 0;
-	public static int thisLevel = 1;
+	public int thisLevel = 1;
 	String[] guiArgs = {};
 	int credits = 0;
-	
-	int numEncounters = 5;
-	
+
+	int numEncounters = 3;  // THIS IS THE REALLY IMPORTANT ONE!!! //
+
 	//Family & home Stuff
 	String wifeStatus = "healthy";
 	String sonStatus = "healthy";
@@ -28,10 +28,10 @@ public class Level {
 	int molSick = 0;
 
 
-	public static int getThisLevel(){
+	public int getThisLevel(){
 		return thisLevel;
 	}
-	
+
 	public static String currSex = "";
 	private ArrayList<String> wordList;
 
@@ -281,15 +281,15 @@ public class Level {
 		boolean gotHeat = false;
 		boolean gotFood = false;
 		Scanner sc = new Scanner(System.in);
-		
-		
+
+
 		if (daysWOHeat >= 2){
 			wifeStatus = "cold";
 		}
 		if (daysWOFood >= 2){
 			wifeStatus = "hungry";
 		}
-		
+
 		if (daysWOFood >2 && daysWOHeat >2){
 			wifeStatus = "sick";
 			wifeSick++;
@@ -318,7 +318,7 @@ public class Level {
 		try{Thread.sleep(1000);}catch(InterruptedException ex){}
 		System.out.println("Your family is " + wifeStatus);
 		try{Thread.sleep(1000);}catch(InterruptedException ex){}
-		if (credits < 25){
+		if (credits < 15){
 			System.out.println("Bank of Arstoksa ALERT: Balance insufficent for rent.");
 			try{Thread.sleep(1000);}catch(InterruptedException ex){}
 			System.out.println("Arstoksa has no patience for debtors.");
@@ -337,55 +337,60 @@ public class Level {
 		try{Thread.sleep(1000);}catch(InterruptedException ex){}
 
 		while (state != "done"){
-			System.out.println("   Choose an option:\n     a. pay for heat - 5 credits \n     b. pay for food - 5 credits\n     c. pay for medicine - 10 credits\n     d. go to sleep");
-			answer = sc.next();
+			if (credits != 0) {
+				System.out.println("   Choose an option:\n     a. pay for heat - 5 credits \n     b. pay for food - 5 credits\n     c. pay for medicine - 5 credits\n     d. go to sleep");
+				answer = sc.next();
 
-			if (answer.equals("a")){
-				try{Thread.sleep(500);}catch(InterruptedException ex){}
-				System.out.println("-- Heating Bill Paid.");
-				try{Thread.sleep(1000);}catch(InterruptedException ex){}
-				gotHeat = true;
-				daysWOHeat = 0;
-				credits -= 5;
-				System.out.println("Bank of Arstoksa Stmt: Balance: " + credits + " credits.");
-				
+				if (answer.equals("a")){
+					try{Thread.sleep(500);}catch(InterruptedException ex){}
+					System.out.println("-- Heating Bill Paid.");
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+					gotHeat = true;
+					daysWOHeat = 0;
+					credits -= 5;
+					System.out.println("Bank of Arstoksa Stmt: Balance: " + credits + " credits.");
 
-			}
-			else if(answer.equals("b")){
-				try{Thread.sleep(500);}catch(InterruptedException ex){}
-				System.out.println("-- Rations Purchased.");
-				try{Thread.sleep(1000);}catch(InterruptedException ex){}
-				gotFood = true;
-				daysWOFood = 0;
-				credits -= 5;
-				System.out.println("Bank of Arstoksa Stmt: Balance: " + credits + " credits.");
 
-			}
-			else if(answer.equals("c")){
-				try{Thread.sleep(500);}catch(InterruptedException ex){}
-				System.out.println("-- Medicine purchased.");
-				try{Thread.sleep(1000);}catch(InterruptedException ex){}
-				credits -= 10;
-				System.out.println("Bank of Arstoksa Stmt: Balance: " + credits + " credits.");
-
-			}
-			else if(answer.equals("d")){
-				
-				if (gotHeat = false) {
-					daysWOHeat++;
 				}
-				if (gotFood = false) {
-					daysWOFood++;
+				else if(answer.equals("b")){
+					try{Thread.sleep(500);}catch(InterruptedException ex){}
+					System.out.println("-- Rations Purchased.");
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+					gotFood = true;
+					daysWOFood = 0;
+					credits -= 5;
+					System.out.println("Bank of Arstoksa Stmt: Balance: " + credits + " credits.");
+
 				}
-				
-				try{Thread.sleep(500);}catch(InterruptedException ex){}
-				System.out.println("After a night of rest, you return to your glorious workplace.");
-				try{Thread.sleep(1000);}catch(InterruptedException ex){}
-				state = "done";
+				else if(answer.equals("c")){
+					try{Thread.sleep(500);}catch(InterruptedException ex){}
+					System.out.println("-- Medicine purchased.");
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+					credits -= 5;
+					System.out.println("Bank of Arstoksa Stmt: Balance: " + credits + " credits.");
+
+				}
+				else if(answer.equals("d")){
+
+					if (gotHeat = false) {
+						daysWOHeat++;
+					}
+					if (gotFood = false) {
+						daysWOFood++;
+					}
+
+					try{Thread.sleep(500);}catch(InterruptedException ex){}
+					System.out.println("After a night of rest, you return to your glorious workplace.");
+					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+					state = "done";
+					break;
+
+				}
+			}
+			else {
+				System.out.println("No remaining credits.");
 				break;
-
-			}
-
+				}
 		}
 	}
 
@@ -402,13 +407,13 @@ public class Level {
 			System.exit(0);
 		}
 		else if (answer.equals("a")) {
-			if (thisLevel%2 == 1) {
-				inCount = 0;
-				outCount = 0;
-				detCount = 0;
-				citationCount = 0;
-				System.out.println("   A new rule may be added. Please examine the Rule Book before continuing..");
-				/*
+			inCount = 0;
+			outCount = 0;
+			detCount = 0;
+			citationCount = 0; 
+			Driver.levelUp();
+			System.out.println("   A new rule may be added. Please examine the Rule Book before continuing..");
+			/*
 				while(rule == "none") {
 					if(rule != "yes") {
 						answer = sc.next();
@@ -426,16 +431,16 @@ public class Level {
 				}
 			}
 			else {
-			*/
-				//System.out.println("  Let us continue.");
-				play = "yes";
-				respond = "none";
-				state = "none";
-				answer = "";
-			}
+			 */
+			//System.out.println("  Let us continue.");
+			play = "yes";
+			respond = "none";
+			state = "none";
+			answer = "";
 		}
-
 	}
+
+
 
 
 
