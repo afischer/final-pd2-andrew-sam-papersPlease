@@ -136,7 +136,9 @@ public class Level {
 					thisLevel++;
 					try{Thread.sleep(1000);}catch(InterruptedException ex){}
 					System.out.println("It is now Day " + thisLevel);
-					try{Thread.sleep(1000);}catch(InterruptedException ex){}
+					Driver.levelUp();
+					break;
+					//try{Thread.sleep(1000);}catch(InterruptedException ex){}
 				}				
 
 			}
@@ -395,7 +397,7 @@ public class Level {
 	}
 
 
-	public void continueGame(){
+	public void continueGame() throws IOException{
 		Scanner sc = new Scanner(System.in);
 		String answer = "";
 
