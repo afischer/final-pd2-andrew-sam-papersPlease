@@ -6,7 +6,7 @@ public class Driver {
 	
 	public static void levelUp() throws IOException{
 		currLevel++;
-		System.out.println("DRIVER THINKS THE CURRENT LEVEL IS " + currLevel);
+		//System.out.println("DRIVER THINKS THE CURRENT LEVEL IS " + currLevel);
 		String[] args = {};
 		main(args);
 	}

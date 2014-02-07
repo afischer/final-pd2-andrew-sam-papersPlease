@@ -15,7 +15,7 @@ public class Level {
 	String[] guiArgs = {};
 	int credits = 0;
 
-	int numEncounters = 3;  // THIS IS THE REALLY IMPORTANT ONE!!! //
+	int numEncounters = 12;  // THIS IS THE REALLY IMPORTANT ONE!!! //
 
 	//Family & home Stuff
 	String wifeStatus = "healthy";
@@ -121,10 +121,13 @@ public class Level {
 				System.out.println("<< Glory to Arstotzka.");
 				try{Thread.sleep(500);}catch(InterruptedException ex){}
 				//System.out.println(p.getValid());
-				if (p.getValid() == false) { //THIS NEEDS TO BE FIXED
+				
+				if (p.getValid() == false) {
 					citationCount++;
 					System.out.println("   PRINTING: MOA CITATION - PASSPORT INVALID");
 					try{Thread.sleep(500);}catch(InterruptedException ex){}
+					
+					
 				}
 				System.out.println("Totals - Accepted:" + inCount + ", Denied:" + outCount + ", Detained:" + detCount + ", Citations:" + citationCount);
 				answer = "none";
@@ -292,7 +295,7 @@ public class Level {
 			wifeStatus = "hungry";
 		}
 
-		if (daysWOFood >2 && daysWOHeat >2){
+		if (daysWOFood >= 2 && daysWOHeat >= 1){
 			wifeStatus = "sick";
 			wifeSick++;
 		}
@@ -314,7 +317,16 @@ public class Level {
 		System.out.println("END OF DAY " + thisLevel + ":");
 		try{Thread.sleep(1000);}catch(InterruptedException ex){}
 		System.out.println("Your daily credit check is handed to you on your way out.");
+		
+		//counts up cash
 		credits += (inCount*5)+(outCount*5)+(detCount*10);
+		if (citationCount > 2) { //for fines
+			credits -= ((citationCount-2)*5);
+			System.out.println("You have been fined " + ((citationCount-2)*5) + " credits for your citations.");
+			try{Thread.sleep(1000);}catch(InterruptedException ex){}
+		}
+		
+		
 		try{Thread.sleep(1000);}catch(InterruptedException ex){}
 		System.out.println("Bank of Arstoksa Stmt: Balance: " + credits + " credits.");
 		try{Thread.sleep(1000);}catch(InterruptedException ex){}
